@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed; /* Keeps the background static during scroll */
+    color: #f0f0f0;
+    padding: 2rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+/* Card Container - uses Flexbox for a responsive grid */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; /* Space between cards */
+}
+
+/* Individual Teacher Card Styling */
+.teacher-card {
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    
+    /* --- The Glassmorphism Effect --- */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    backdrop-filter: blur(12px); /* The blur effect */
+    -webkit-backdrop-filter: blur(12px); /* For Safari compatibility */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Card shadow */
+    
+    /* --- Animation --- */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Hover Animation --- */
+.teacher-card:hover {
+    transform: translateY(-10px); /* Lifts the card up */
+    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.4); /* Enhances the shadow */
+}
+
+/* Card Content Styling */
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.teacher-id {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.card-body p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.card-body strong {
+    color: #ddd; /* Makes the label slightly dimmer */
+    font-weight: 400;
+}
+    </style>
+</head>
+<body>
+
+    <h1>Teacher Home Page</h1>
+
+    <div class="card-container">
+        {% for teacher in data %}
+        <div class="teacher-card">
+            <div class="card-header">
+                <h2>{{ teacher.name }}</h2>
+                <span class="teacher-id">ID: {{ teacher.id }}</span>
+            </div>
+            <div class="card-body">
+                <p><strong>Subject:</strong> {{ teacher.subject }}</p>
+                <p><strong>Email:</strong> {{ teacher.email }}</p>
+                <p><strong>Age:</strong> {{ teacher.age }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

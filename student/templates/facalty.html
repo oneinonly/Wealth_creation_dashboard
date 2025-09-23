@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Directory</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-attachment: fixed; /* Keeps background still on scroll */
+    color: #f0f0f0;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 3rem;
+}
+
+/* Card Container: Uses Flexbox for a responsive grid */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Space between cards */
+}
+
+/* Individual Faculty Card Styling */
+.faculty-card {
+    width: 320px;
+    border-radius: 16px;
+    overflow: hidden; /* Crucial for rounding the image corners */
+    
+    /* --- The Glassmorphism Effect --- */
+    background: rgba(255, 255, 255, 0.1); /* Transparent background */
+    backdrop-filter: blur(12px); /* The "frosted glass" blur */
+    -webkit-backdrop-filter: blur(12px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle edge highlight */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* The shadow */
+    
+    /* --- Animation --- */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Hover Animation --- */
+.faculty-card:hover{
+    transform: translateY(-12px); /* Lifts the card up */
+    box-shadow: 0 16px 45px 0 rgba(0, 0, 0, 0.45); /* Makes shadow stronger */
+    color: rgb(192, 233, 11);
+    font-size: large;
+    background-color: rgb(28, 14, 80);
+    backdrop-filter: blur(12px); /* The "frosted glass" blur */
+    -webkit-backdrop-filter: blur(12px); /* For Safari */
+    border: 5px solid rgb(237, 237, 213) /* Subtle edge highlight */
+}
+img:hover {
+    transition: transform 0.3s ease;
+    border: 5px solid rgb(225, 226, 227);
+}
+/* Faculty Photo Container */
+.card-photo {
+    height: 220px; /* Sets a uniform height for all photos */
+    width: 100%;
+    /* display: flex; */
+    /* border-radius: 50%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:5px;
+}
+
+.card-photo img {
+    width: 80%;
+    height: 100%;
+    border-radius: 50%;
+    /* This is key: it fills the container without stretching the image */
+    object-fit: center; 
+}
+
+/* Card Content Area */
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.faculty-name {
+    margin: 0 0 5px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.faculty-subject {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #6dd5ed; /* A nice accent color */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+}
+
+.faculty-details p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left; /* Aligns the details neatly */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.faculty-details strong {
+    color: #ccc;
+    font-weight: 400;
+    margin-right: 8px;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Our Faculty</h1>
+
+    <div class="card-container">
+        {% for faculty in data %}
+        <div class="faculty-card">
+            <div class="card-photo">
+                <img src="{{ faculty.photo.url }}" alt="Photo of {{ faculty.name }}">
+            </div>
+            <div class="card-content">
+                <h2 class="faculty-name">{{ faculty.name }}</h2>
+                <p class="faculty-subject">{{ faculty.subject }}</p>
+                <div class="faculty-details">
+                    <p><strong>Email:</strong> {{ faculty.email }}</p>
+                    <p><strong>Age:</strong> {{ faculty.age }}</p>
+                    <p><strong>ID:</strong> {{ faculty.id }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
