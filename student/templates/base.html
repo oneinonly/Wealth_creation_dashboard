@@ -1,246 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wealth Creation</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-        :root {
-            --primary-color: #007BFF;
-            --light-bg-color: #f0f2f5;
-            --light-text-color: #333;
-            --light-transparent-bg: rgba(255, 255, 255, 0.2);
-            --dark-bg-color: #1a1a1a;
-            --dark-text-color: #e0e0e0;
-            --dark-transparent-bg: rgba(0, 0, 0, 0.2);
-            --blur-strength: 10px;
-        }
-
-        /* Light Mode Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-bg-color);
-            color: var(--light-text-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .navbar {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: transparent;
-        }
-        
-        .navbar.scrolled {
-            background-color: var(--light-transparent-bg);
-            backdrop-filter: blur(var(--blur-strength));
-            -webkit-backdrop-filter: blur(var(--blur-strength));
-        }
-
-        .logo, .nav-item a, .mobile-menu-toggle {
-            color: var(--light-text-color);
-        }
-        
-        .nav-links.active {
-            background-color: var(--light-transparent-bg);
-            backdrop-filter: blur(var(--blur-strength));
-            -webkit-backdrop-filter: blur(var(--blur-strength));
-        }
-
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: var(--dark-bg-color);
-            color: var(--dark-text-color);
-        }
-        
-        body.dark-mode .navbar {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-        }
-
-        body.dark-mode .navbar.scrolled {
-            background-color: var(--dark-transparent-bg);
-            backdrop-filter: blur(var(--blur-strength));
-            -webkit-backdrop-filter: blur(var(--blur-strength));
-        }
-
-        body.dark-mode .logo, body.dark-mode .nav-item a, body.dark-mode .mobile-menu-toggle {
-            color: var(--dark-text-color);
-        }
-
-        body.dark-mode .nav-item a:hover {
-            color: var(--primary-color);
-        }
-
-        body.dark-mode .nav-item a::before {
-            background-color: var(--primary-color);
-        }
-        
-        body.dark-mode .nav-links.active {
-            background-color: var(--dark-transparent-bg);
-            backdrop-filter: blur(var(--blur-strength));
-            -webkit-backdrop-filter: blur(var(--blur-strength));
-        }
-
-        /* General & Layout Styles (unchanged) */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-item a {
-            position: relative;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .nav-item a:hover {
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .nav-item a::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-color);
-            visibility: hidden;
-            transform: scaleX(0);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .nav-item a:hover::before {
-            visibility: visible;
-            transform: scaleX(1);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        /* Day/Night Toggle Button */
-        .theme-switch-wrapper {
-            display: flex;
-            align-items: center;
-            margin-left: 2rem;
-        }
-
-        .theme-switch {
-            display: inline-block;
-            height: 34px;
-            position: relative;
-            width: 60px;
-        }
-
-        .theme-switch input {
-            display: none;
-        }
-
-        .slider {
-            background-color: #ccc;
-            bottom: 0;
-            cursor: pointer;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: .4s;
-        }
-
-        .slider:before {
-            background-color: #fff;
-            bottom: 4px;
-            content: "";
-            height: 26px;
-            left: 4px;
-            position: absolute;
-            transition: .4s;
-            width: 26px;
-        }
-
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-
-        /* Mobile Responsive (unchanged) */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding: 1rem 0;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-item {
-                text-align: center;
-                margin: 0.5rem 0;
-            }
-            .mobile-menu-toggle {
-                display: block;
-            }
-            .theme-switch-wrapper {
-                margin-left: 0;
-                order: -1;
-            }
-            .nav-container {
-                justify-content: space-between;
-                flex-wrap: wrap;
-            }
-        }
-    </style>
+   <link rel="stylesheet" href="{% static 'CSS/nav.css'%}">
+   {% load static %}
+   {% comment %} <script src="{% static 'JS/nav.js'%}"></script> {% endcomment %}
 </head>
+
+
+{% block header %}
+
+{% endblock %} 
+
+
 <body>
 
     <header class="navbar" id="navbar">
@@ -254,10 +30,10 @@
             </div>
             <nav>
                 <ul class="nav-links" id="nav-links">
-                    <li class="nav-item"><a href="#">Home</a></li>
-                    <li class="nav-item"><a href="student">Student</a></li>
-                    <li class="nav-item"><a href="teacher">Teacher</a></li>
-                    <li class="nav-item"><a href="facaltyc">Faculty</a></li>
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/student">Student</a></li>
+                    <li class="nav-item"><a href="/teacher">Teacher</a></li>
+                    <li class="nav-item"><a href="/facalty">Faculty</a></li>
                     <li class="nav-item"><a href="#">Financial Service</a></li>
                     <li class="nav-item"><a href="#">Success Story</a></li>
                     <li class="nav-item"><a href="#">About</a></li>
@@ -270,7 +46,12 @@
         </div>
     </header>
 
-    <script>
+{% block content %}
+
+{% endblock %} 
+
+     <script> 
+        
         const navbar = document.getElementById('navbar');
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
@@ -308,7 +89,8 @@
         mobileMenuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-    </script>
+    
+    </script> 
 
 </body>
 </html>

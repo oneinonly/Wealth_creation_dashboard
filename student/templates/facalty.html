@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* General Body Styling */
-body {
+.faculty {
+    margin-top:100px ;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     background-attachment: fixed; /* Keeps background still on scroll */
@@ -129,7 +133,7 @@ img:hover {
     </style>
 </head>
 <body>
-
+<div class='faculty'> 
     <h1>Our Faculty</h1>
 
     <div class="card-container">
@@ -150,6 +154,8 @@ img:hover {
         </div>
         {% endfor %}
     </div>
-
+</div>
 </body>
 </html>
+
+{% endblock %}

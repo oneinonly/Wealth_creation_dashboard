@@ -4,9 +4,9 @@ from student.models import Student,teachers, facalty
 # Register your models here.
 
 class studentAdmin(admin.ModelAdmin):
-    list_display=("id", "name", "city", "email", "age",)
+    list_display=("id", "name", "city", "email", "age", "education", "address", "bloodgroub", "photo")
     search_fields = ("name","id", "city",)
-    list_filter = ("city","name",)
+    list_filter = ("id" ,"city","name",)
 
 admin.site.register(Student, studentAdmin)
 

@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* General Body Styling */
-body {
+.teacher-main {
+    margin-top: 100px;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     background-attachment: fixed; /* Keeps the background static during scroll */
@@ -97,6 +101,10 @@ h1 {
 </head>
 <body>
 
+<div class ='teacher-main' >
+
+
+
     <h1>Teacher Home Page</h1>
 
     <div class="card-container">
@@ -114,6 +122,8 @@ h1 {
         </div>
         {% endfor %}
     </div>
-
+</div>
 </body>
 </html>
+
+{% endblock %}

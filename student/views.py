@@ -9,7 +9,7 @@ def student_home(request):
     print(data)
     
     # return HttpResponse("Welcome to the Student Home Page")
-    return render(request,'home.html',{'data':data})
+    return render(request,'student.html',{'data':data})
 
 def teacher_home(request):
     data=teachers.objects.all()
