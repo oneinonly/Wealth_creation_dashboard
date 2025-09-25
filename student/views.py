@@ -16,14 +16,19 @@ def teacher_home(request):
     print(data)
     
     # return HttpResponse("Welcome to the Student Home Page")
-    return render(request,'teacher.html',{'data':data})
+    return render(request,'student.html',{'data':data})
 
 def facalty_home(request):
     data=facalty.objects.all()
     print(data)
-    
     # return HttpResponse("Welcome to the Student Home Page")
-    return render(request,'facalty.html',{'data':data})
+    return render(request,'student.html',{'data':data})
 
 def base_home(request):
     return render (request,'base.html')
+
+def wealthcreation_home(request):
+    data=facalty.objects.all()
+    print(data)
+    
+    return render (request, 'home.html', {'data':data})

@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wealth Creation</title>
    <link rel="stylesheet" href="{% static 'CSS/nav.css'%}">
-   {% load static %}
-   {% comment %} <script src="{% static 'JS/nav.js'%}"></script> {% endcomment %}
+   <link rel="stylesheet" href="{% static 'CSS/faculty.css'%}">
+
+   
+    <script src="{% static 'JS/nav.js'%}"></script> 
 </head>
 
 
@@ -30,7 +32,7 @@
             </div>
             <nav>
                 <ul class="nav-links" id="nav-links">
-                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/home">Home</a></li>
                     <li class="nav-item"><a href="/student">Student</a></li>
                     <li class="nav-item"><a href="/teacher">Teacher</a></li>
                     <li class="nav-item"><a href="/facalty">Faculty</a></li>
@@ -45,12 +47,12 @@
             </div>
         </div>
     </header>
-
+<br><br><br>
 {% block content %}
 
 {% endblock %} 
 
-     <script> 
+<script> 
         
         const navbar = document.getElementById('navbar');
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -90,7 +92,9 @@
             navLinks.classList.toggle('active');
         });
     
-    </script> 
+</script> 
+{% load static %}
+ {% comment %} <script src="{% static 'JS/nav.js'%}"></script>  {% endcomment %}
 
 </body>
 </html>

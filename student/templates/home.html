@@ -1,8 +1,10 @@
+
+
 {% extends 'base.html' %}
 {% block content %}
 
 <div class='faculty'> 
-       <h1 class="main-heading"> Pannel </h1>
+       <h1 class="main-heading"> {{profile}} Pannel </h1>
     <div class="card-container">
         {% for student in data %}
         <div class="faculty-card">
@@ -27,3 +29,4 @@
     </div>
 </div>
 {% endblock %}
+
