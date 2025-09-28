@@ -1,5 +1,5 @@
 from django.contrib import admin
-from student.models import Student,teachers, facalty
+from student.models import Student,teachers, facalty, registration
 
 # Register your models here.
 
@@ -23,3 +23,10 @@ class facaltyAdmin(admin.ModelAdmin):
     list_filter = ("id", "subject","name",)
 
 admin.site.register(facalty, facaltyAdmin)
+
+class registrationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'email','mobile', 'password',)
+    search_fields = ('id', 'name', 'email','mobile',)
+    list_fields = ('id', 'name', 'email','mobile',)
+    
+admin.site.register(registration, registrationAdmin)

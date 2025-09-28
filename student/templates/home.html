@@ -1,32 +1,5 @@
-
-
 {% extends 'base.html' %}
 {% block content %}
+<div class="main"><h1 class='font-stretch-expanded'> Welcome to Wealth Creation Home Page</h1> </div>
 
-<div class='faculty'> 
-       <h1 class="main-heading"> {{profile}} Pannel </h1>
-    <div class="card-container">
-        {% for student in data %}
-        <div class="faculty-card">
-            <div class="card-photo">
-                <img src="{{ student.photo.url }}" alt="">
-            </div>
-            <div class="card-content">
-                <h2 class="faculty-name">{{student.name }}</h2>
-                <p class="faculty-subject">{{ student.subject }}</p>
-                <div class="faculty-details">
-                    <p><strong>ID:</strong> {{ student.id }}</p>
-                    <p><strong>Age:</strong> {{ student.age }}</p>
-                    <p><strong>Email:</strong> {{ student.email }}</p>
-                    <p><strong>Mobile No:</strong> {{ student.mobile }}</p>
-                    <p><strong>Education:</strong> {{ student.education }}</p>
-                    <p><strong>Blood Group:</strong> {{ student.bloodgroub }}</p>
-                    <p><strong>Address:</strong> {{ student.address }}</p>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
 {% endblock %}
-

@@ -8,9 +8,10 @@
     <title>Wealth Creation</title>
    <link rel="stylesheet" href="{% static 'CSS/nav.css'%}">
    <link rel="stylesheet" href="{% static 'CSS/faculty.css'%}">
-
+   <link rel="stylesheet" href="{% static 'CSS/login.css'%}">
    
-    <script src="{% static 'JS/nav.js'%}"></script> 
+    
+
 </head>
 
 
@@ -32,7 +33,7 @@
             </div>
             <nav>
                 <ul class="nav-links" id="nav-links">
-                    <li class="nav-item"><a href="/home">Home</a></li>
+                    <li class="nav-item"><a href="/">Home</a></li>
                     <li class="nav-item"><a href="/student">Student</a></li>
                     <li class="nav-item"><a href="/teacher">Teacher</a></li>
                     <li class="nav-item"><a href="/facalty">Faculty</a></li>
@@ -40,6 +41,7 @@
                     <li class="nav-item"><a href="#">Success Story</a></li>
                     <li class="nav-item"><a href="#">About</a></li>
                     <li class="nav-item"><a href="#">Contact us</a></li>
+                    <li class="nav-item"><a href="/registration">Register</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu-toggle" id="mobile-menu-toggle">
@@ -52,7 +54,8 @@
 
 {% endblock %} 
 
-<script> 
+
+{% comment %} <script> 
         
         const navbar = document.getElementById('navbar');
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -92,9 +95,10 @@
             navLinks.classList.toggle('active');
         });
     
-</script> 
+</script>  {% endcomment %}
 {% load static %}
- {% comment %} <script src="{% static 'JS/nav.js'%}"></script>  {% endcomment %}
+ <script src="{% static 'JS/nav.js'%}"></script>  
+
 
 </body>
 </html>
